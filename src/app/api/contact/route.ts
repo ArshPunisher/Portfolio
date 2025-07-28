@@ -2,6 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { contactSchema } from "@/utils/contactSchema";
 import { sendMail } from "@/lib/mail";
 
+interface ErrorWithMessage {
+  message: string;
+}
+
+function isErrorWithMessage(error: unknown): error is ErrorWithMessage {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof (error as Record<string, unknown>).message === "string"
+  );
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -43,8 +56,8 @@ export async function POST(req: NextRequest) {
   } catch (e: unknown) {
     console.error("Contact form error:", e);
     let message = "Failed to send message";
-    if (e && typeof e === "object" && "message" in e && typeof (e as any).message === "string") {
-      message = (e as any).message;
+    if (isErrorWithMessage(e)) {
+      message = e.message;
     }
     return NextResponse.json(
       { error: message },

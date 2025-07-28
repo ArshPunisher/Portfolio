@@ -7,6 +7,19 @@ import { contactSchema, type ContactInput } from "@/utils/contactSchema";
 import toast from "react-hot-toast";
 import './Contact-form.css'; // Assuming you have a CSS file for styles
 
+interface ErrorWithMessage {
+  message: string;
+}
+
+function isErrorWithMessage(error: unknown): error is ErrorWithMessage {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof (error as Record<string, unknown>).message === "string"
+  );
+}
+
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const {
@@ -36,12 +49,12 @@ export default function ContactForm() {
         const payload = await res.json().catch(() => ({}));
         throw new Error(payload.error || "Failed to send message");
       }
-      toast.success("Message sent! I’ll get back to you soon.");
+      toast.success("Message sent! I'll get back to you soon.");
       reset();
     } catch (e: unknown) {
       let message = "Something went wrong.";
-      if (e && typeof e === "object" && "message" in e && typeof (e as any).message === "string") {
-        message = (e as any).message;
+      if (isErrorWithMessage(e)) {
+        message = e.message;
       }
       toast.error(message);
     } finally {

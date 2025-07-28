@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { gsap } from "gsap";
 import mySkillsSvg from "../../../assets/svg/skills.svg";
 import skillsLottie from "../../../assets/animations/developer-skills.json";
 import { illustration, skillsSection } from "@/portfolio";
 import SkillsMastery from "../../Skills Mastery/SkillsMastery";
+import "./Skills.css";
 
 const DisplayLottie = dynamic(() => import("../../Lottie/DisplayLottie"), {
   ssr: false,
@@ -27,27 +27,6 @@ const chunkInto = <T,>(arr: T[], chunks: number): T[][] => {
 const Skills = () => {
   const { softwareSkills } = skillsSection;
   const rows = chunkInto<SoftwareSkill>(softwareSkills, 3);
-
-  const rowRefs = useRef<HTMLDivElement[]>([]);
-
-  useLayoutEffect(() => {
-    rowRefs.current.forEach((row, idx) => {
-      if (!row) return;
-
-      const direction = idx % 2 === 0 ? "-100%" : "100%";
-      const speed = 12 + idx * 6; // faster
-
-      gsap.to(row, {
-        x: direction,
-        duration: speed,
-        ease: "none",
-        repeat: -1,
-        modifiers: {
-          x: (x) => `${parseFloat(x) % row.scrollWidth}px`,
-        },
-      });
-    });
-  }, []);
 
   return (
     <>
@@ -88,10 +67,11 @@ const Skills = () => {
                 {rows.map((row, idx) => (
                   <div
                     key={idx}
-                    ref={(el) => {
-                      if (el) rowRefs.current[idx] = el!;
+                    className="flex w-max gap-4 animate-marquee"
+                    style={{
+                      animationDuration: `${15 + idx * 5}s`,
+                      animationDirection: idx % 2 === 0 ? 'normal' : 'reverse'
                     }}
-                    className="flex w-max gap-4"
                   >
                     {/* Original row */}
                     <ul className="flex gap-4 items-center">
