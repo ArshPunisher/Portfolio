@@ -1,4 +1,9 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+// Map company logo names to static imports
+const companyLogos: Record<string, StaticImageData> = {
+  "future-finders.webp": require("@/assets/imgs/future-finders.webp"),
+  "xampus.webp": require("@/assets/imgs/xampus.webp"),
+};
 import { workExperiences } from "@/portfolio";
 
 function ExperienceCard({
@@ -13,12 +18,16 @@ function ExperienceCard({
     >
       {/* Card Content */}
       <div className="w-full max-w-[90%] flex flex-col sm:flex-row items-start gap-x-8 bg-white/90 relative z-10 mb-8">
-        {exp.companylogo && (
+        {exp.companylogo && companyLogos[exp.companylogo] ? (
           <Image
-            src={require(`@/assets/imgs/${exp.companylogo}`).default}
+            src={companyLogos[exp.companylogo]}
             alt={exp.company}
             className="w-18 md:w-24 h-18 md:h-24 object-contain object-center rounded-full bg-gray-100 mb-4 sm:mb-0"
           />
+        ) : (
+          <div className="w-18 md:w-24 h-18 md:h-24 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 mb-4 sm:mb-0">
+            <span className="text-2xl font-bold">{exp.company[0]}</span>
+          </div>
         )}
         <div className="flex flex-col flex-1">
           <h3 className="text-[20px] md:text-[24px] xl:text-[28px] font-semibold tracking-wide text-gray-800">

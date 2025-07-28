@@ -1,8 +1,17 @@
 "use client";
 
+
 import React, { useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+
+// Map image names to imports for static optimization
+const projectImages: Record<string, StaticImageData> = {
+  "ai_resume.webp": require("@/assets/imgs/ai_resume.webp"),
+  "never-know.webp": require("@/assets/imgs/never-know.webp"),
+  "recipe.webp": require("@/assets/imgs/recipe.webp"),
+  "notes.webp": require("@/assets/imgs/notes.webp"),
+};
 
 type Project = {
   image: string;
@@ -68,9 +77,9 @@ export const AnimatedProjectCard = ({ project }: { project: Project }) => {
             className="relative w-full overflow-hidden rounded-lg bg-gradient-to-br from-orange-100 to-yellow-100 shadow-lg"
             style={{ transform: "translateZ(30px)" }}
           >
-            {project.image ? (
+            {project.image && projectImages[project.image] ? (
               <Image
-                src={require(`@/assets/imgs/${project.image}`).default}
+                src={projectImages[project.image]}
                 alt={project.projectName}
                 width={480}
                 height={270}

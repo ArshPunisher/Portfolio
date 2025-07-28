@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import Headroom from "react-headroom";
 
@@ -12,7 +13,7 @@ const Navbar = () => {
       }}
     >
       <nav className="w-full p-3 sm:p-4 bg-white mx-auto relative flex items-start justify-between z-[9999]">
-        <a
+        <Link
           href="/"
           className="block flex-none text-[1.5em] mt-2 leading-normal whitespace-nowrap"
           style={{ flexShrink: 0 }}
@@ -22,33 +23,33 @@ const Navbar = () => {
             Arsh<span className="hidden lg:inline"> Ramgarhia</span>
           </span>
           <span className="grey-color"> /&gt;</span>
-        </a>
+        </Link>
         {/* Desktop/Tablet Nav */}
         <div className="navbar-menu hidden lg:flex flex-wrap items-center gap-2 overflow-visible min-w-0">
           <div className="flex items-center">
-            <a href="#skills" className="navbar-link">
+            <Link href="#skills" className="navbar-link">
               Skills
-            </a>
+            </Link>
           </div>
           <div className="flex items-center">
-            <a href="#experience" className="navbar-link">
+            <Link href="#experience" className="navbar-link">
               Experience
-            </a>
+            </Link>
           </div>
           <div className="flex items-center">
-            <a href="#projects" className="navbar-link">
+            <Link href="#projects" className="navbar-link">
               Projects
-            </a>
+            </Link>
           </div>
           <div className="flex items-center">
-            <a href="#achievements" className="navbar-link">
+            <Link href="#achievements" className="navbar-link">
               Achievements
-            </a>
+            </Link>
           </div>
           <div className="flex items-center">
-            <a href="#contact" className="navbar-link">
+            <Link href="#contact" className="navbar-link">
               Contact Me
-            </a>
+            </Link>
           </div>
         </div>
         {/* Hamburger for mobile */}

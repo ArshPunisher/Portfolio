@@ -22,7 +22,7 @@ export async function verifyToken(token: string) {
   try {
     const { payload } = await jwtVerify(token, SECRET_KEY);
     return payload;
-  } catch (err) {
+  } catch {
     return null;
   }
 }

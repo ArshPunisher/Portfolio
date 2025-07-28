@@ -1,4 +1,5 @@
 "use client";
+import landingPageSvg from "../../../assets/svg/landingPage.svg";
 
 import React, { useContext } from "react";
 import { Typewriter } from "react-simple-typewriter";
@@ -54,7 +55,7 @@ const HomePage = () => {
           ) : (
             <div className="w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] xl:w-[340px]">
               <Image
-                src={require("../../../assets/svg/landingPage.svg")}
+                src={landingPageSvg}
                 alt="Landing Page Illustration"
                 className="w-65 sm:w-auto h-65 sm:h-auto"
                 priority
