@@ -8,7 +8,7 @@ export const splashScreen = {
 };
 
 export const illustration = {
-  animated: true // Set to false to use static SVG
+  animated: true, // Set to false to use static SVG
 };
 
 // Greeting Section
@@ -24,7 +24,7 @@ export const greeting = {
     "I'm a Full-Stack Web Developer who builds web applications with React.js, Next.js, Node.js, Express, PostgreSQL, Firebase, and Tailwind CSS. I handle both frontend and backend development, focusing on building functional and efficient solutions.",
   resumeLink:
     "https://drive.google.com/file/d/1tGPZHT3aNVxbLSaxskwRv_HN7UWE2knG/view?usp=sharing",
-  displayGreeting: true
+  displayGreeting: true,
 };
 
 // Social Media Links
@@ -38,7 +38,7 @@ export const socialMediaLinks = {
 
 // Skills Section
 export const skillsSection = {
-  title: "My Skills",
+  title: "What I Do",
   subTitle:
     "DEVELOPER FUELED BY CAFFEINE WHO LOVES TO BUILD ACROSS WEB, CLOUD, AND BEYOND",
   skills: [
@@ -81,29 +81,6 @@ export const skillsSection = {
   display: true,
 };
 
-// Education Section
-export const educationInfo = {
-  display: true,
-  schools: [
-    {
-      schoolName: "Punjab Technical University",
-      logo: "",
-      subHeader: "Bachelor's of Technology in Computer Science",
-      duration: "July 2020 - July 2024",
-      desc: "Scored 9.2 CGPA till now",
-      descBullets: ["Active member of coding club and technical workshops."],
-    },
-    {
-      schoolName: "Amritsar Group of Colleges",
-      logo: "",
-      subHeader: "Senior Secondary",
-      duration: "July 2018 - July 2020",
-      desc: "Secured 84% in board exams.",
-      descBullets: ["Participated in various technical and cultural events."],
-    },
-  ],
-};
-
 // Tech Stack
 export const skillsMastery = {
   viewSkillBars: true,
@@ -123,8 +100,20 @@ export const workExperiences = {
   experience: [
     {
       role: "Full Stack Developer Intern",
+      company: "Future Finders",
+      companylogo: "future-finders.webp",
+      date: "Jan 2024 - Jun 2024",
+      desc: "Worked on full-stack development projects, collaborated in team environments, and developed a social media platform project.",
+      descBullets: [
+        "Developed and deployed full-stack web applications with modern tech stacks.",
+        "Collaborated with team members using Git and Agile practices.",
+        "Built a social media project with features like user posts, comments, and authentication.",
+      ],
+    },
+    {
+      role: "Full Stack Developer Intern",
       company: "Xampus",
-      companylogo: "", // Add logo path if available
+      companylogo: "xampus.webp",
       date: "May 2024 - Nov 2024",
       desc: "Worked on full-stack web development projects, optimized performance, and collaborated with cross-functional teams.",
       descBullets: [
@@ -139,32 +128,37 @@ export const workExperiences = {
 // Projects
 export const bigProjects = {
   title: "Projects",
-  subtitle: "SOME OF MY PERSONAL AND TEAM PROJECTS",
+  subtitle: "SOME OF MY FEATURED PERSONAL PROJECTS",
   projects: [
-    {
-      image: "", // Add image path if available
-      projectName: "Portfolio Website",
-      projectDesc:
-        "A personal portfolio website to showcase my projects and skills.",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "https://github.com/arshramgarhia/portfolio",
-        },
-      ],
-    },
-    {
-      image: "",
-      projectName: "Task Manager",
-      projectDesc:
-        "A full-stack task management app with authentication and real-time updates.",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "https://github.com/arshramgarhia/task-manager",
-        },
-      ],
-    },
+{
+  image: "ai_resume.webp",
+  projectName: "Ai Resume Builder",
+  projectDesc:
+    "Built with React and Firebase, this AI-powered resume builder uses OpenAI API to generate professional content dynamically. Includes multi-step form handling, PDF export, real-time preview, and template selection with persistent user sessions.",
+  url: "https://ai-resume-builder-23eb4.web.app/",
+},
+{
+  image: "never-know.webp",
+  projectName: "Never Know",
+  projectDesc:
+    "A full-stack PERN marketplace with secure JWT-based auth, PostgreSQL queries, role-based dashboards, dynamic product listings, cart, and transaction tracking. Optimized using Express middleware, protected routes, and relational DB schema design.",
+  url: "https://github.com/ArshPunisher/NeverKnow",
+},
+{
+  image: "recipe.webp",
+  projectName: "Recipe Bloggers",
+  projectDesc:
+    "A MERN stack platform with RESTful APIs and token-based authentication. Enables recipe posting, likes, comments, and user profile management. Built with modular Express routes and MongoDB schema validation using Mongoose.",
+  url: "https://recipe-bloggers.onrender.com/",
+},
+{
+  image: "notes.webp",
+  projectName: "Notes",
+  projectDesc:
+    "A minimal MERN stack notes app with JWT auth, protected routes, and full CRUD. Features include category tagging, MongoDB indexing, and a responsive UI built with Tailwind CSS and React hooks.",
+  url: "https://github.com/ArshPunisher/Notes-MERN",
+},
+
   ],
   display: true,
 };
@@ -204,8 +198,8 @@ export const blogSection = {
 
 // Contact Info
 export const contactInfo = {
-  title: "Contact Me",
-  subtitle: "Discuss a project or just want to say hi? My inbox is open!",
+  title: "Get in Touch",
+  subtitle: "Want to collaborate or just drop a friendly hello? I’m all ears!",
   email_address: "arshsiddle0822@gmail.com",
 };
 

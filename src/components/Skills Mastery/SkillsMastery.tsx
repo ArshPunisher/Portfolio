@@ -2,7 +2,7 @@ import React from "react";
 import { illustration, skillsMastery } from "@/portfolio";
 import dynamic from "next/dynamic";
 import masteryLottie from "../../assets/animations/mastery.json";
-import landingPage2Svg from "../../assets/svg/landingPage2.svg";
+import landingPage2Svg from "../../assets/svg/my-skills.svg";
 import Image from "next/image";
 
 const DisplayLottie = dynamic(() => import("../Lottie/DisplayLottie"), { ssr: false });
@@ -14,7 +14,7 @@ export default function SkillsMastery() {
     <div className="flex flex-col md:flex-row w-[90%] mx-auto mt-8 gap-8 items-center">
       {/* Progress Bars */}
       <div className="flex-1 w-full">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">Mastery</h2>
+        <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] font-medium mb-6 text-gray-900 tracking-wider">Mastery</h2>
         {skillsMastery.experience.map((exp, i) => (
           <div key={i} className="mb-6">
             <p className="mb-1 text-lg font-medium text-gray-700">{exp.Stack}</p>

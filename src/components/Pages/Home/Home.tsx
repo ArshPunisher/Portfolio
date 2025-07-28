@@ -21,7 +21,7 @@ const HomePage = () => {
     <section id="home" className="flex flex-col justify-center items-center min-h-screen bg-white transition-colors duration-100 py-[10px] px-[10px] mx-auto">
       <div className="w-[98%] lg:w-[94%] flex flex-col-reverse lg:flex-row items-center justify-between gap-8">
         {/* Text and Socials */}
-        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center md:text-left mb-8 md:mb-0">
           <h1 className="font-bold text-[1.8rem] sm:text-[2.4rem] md:text-[2.4rem] lg:text-[2.8rem] xl:text-[3rem] leading-tight mb-4 flex items-center text-black">
             <span className="inline-block align-middle">
               <Typewriter
@@ -56,7 +56,7 @@ const HomePage = () => {
               <Image
                 src={require("../../../assets/svg/landingPage.svg")}
                 alt="Landing Page Illustration"
-                className="w-full h-auto"
+                className="w-65 sm:w-auto h-65 sm:h-auto"
                 priority
               />
             </div>
