@@ -5,12 +5,16 @@ import React, { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
+import aiResumeImg from "@/assets/imgs/ai_resume.webp";
+import neverKnowImg from "@/assets/imgs/never-know.webp";
+import recipeImg from "@/assets/imgs/recipe.webp";
+import notesImg from "@/assets/imgs/notes.webp";
 // Map image names to imports for static optimization
 const projectImages: Record<string, StaticImageData> = {
-  "ai_resume.webp": require("@/assets/imgs/ai_resume.webp"),
-  "never-know.webp": require("@/assets/imgs/never-know.webp"),
-  "recipe.webp": require("@/assets/imgs/recipe.webp"),
-  "notes.webp": require("@/assets/imgs/notes.webp"),
+  "ai_resume.webp": aiResumeImg,
+  "never-know.webp": neverKnowImg,
+  "recipe.webp": recipeImg,
+  "notes.webp": notesImg,
 };
 
 type Project = {

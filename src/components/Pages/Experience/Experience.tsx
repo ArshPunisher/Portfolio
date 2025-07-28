@@ -1,8 +1,9 @@
 import Image, { StaticImageData } from "next/image";
-// Map company logo names to static imports
+import futureFindersLogo from "@/assets/imgs/future-finders.webp";
+import xampusLogo from "@/assets/imgs/xampus.webp";
 const companyLogos: Record<string, StaticImageData> = {
-  "future-finders.webp": require("@/assets/imgs/future-finders.webp"),
-  "xampus.webp": require("@/assets/imgs/xampus.webp"),
+  "future-finders.webp": futureFindersLogo,
+  "xampus.webp": xampusLogo,
 };
 import { workExperiences } from "@/portfolio";
 

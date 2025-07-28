@@ -15,7 +15,7 @@ import typingLottie from "../../../assets/animations/program_typing.json";
 import { greeting, illustration } from "@/portfolio";
 
 const HomePage = () => {
-  const { isDark } = useContext(StyleContext);
+  useContext(StyleContext);
 
 
   return (

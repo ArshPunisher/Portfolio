@@ -40,10 +40,14 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.error("Contact form error:", e);
+    let message = "Failed to send message";
+    if (e && typeof e === "object" && "message" in e && typeof (e as any).message === "string") {
+      message = (e as any).message;
+    }
     return NextResponse.json(
-      { error: e.message || "Failed to send message" },
+      { error: message },
       { status: 500 }
     );
   }

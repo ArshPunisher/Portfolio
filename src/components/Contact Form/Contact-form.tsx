@@ -38,8 +38,12 @@ export default function ContactForm() {
       }
       toast.success("Message sent! I’ll get back to you soon.");
       reset();
-    } catch (e: any) {
-      toast.error(e.message ?? "Something went wrong.");
+    } catch (e: unknown) {
+      let message = "Something went wrong.";
+      if (e && typeof e === "object" && "message" in e && typeof (e as any).message === "string") {
+        message = (e as any).message;
+      }
+      toast.error(message);
     } finally {
       setLoading(false);
     }

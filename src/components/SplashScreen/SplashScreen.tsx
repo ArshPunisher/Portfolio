@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import StyleContext from "../../contexts/StyleContext";
+import React from "react";
 import "./SplashScreen.css";
 import welcomeLottie from "../../assets/animations/welcome.json";
 import planeLottie from "../../assets/animations/planeLoading.json";

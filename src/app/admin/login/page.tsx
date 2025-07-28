@@ -39,7 +39,7 @@ export default function LoginForm() {
         // Redirect or show success
         window.location.href = "/";
       }
-    } catch (err) {
+    } catch {
       setError("Server error");
     } finally {
       setLoading(false);
