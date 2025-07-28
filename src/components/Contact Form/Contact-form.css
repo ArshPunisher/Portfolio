@@ -40,6 +40,22 @@
   opacity: 0.9;
 }
 
+/* Fix autocomplete text color */
+.contact-input:-webkit-autofill,
+.contact-input:-webkit-autofill:hover,
+.contact-input:-webkit-autofill:focus,
+.contact-input:-webkit-autofill:active {
+  -webkit-text-fill-color: #222 !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Fix autocomplete dropdown styling */
+.contact-input:-webkit-autofill {
+  background-color: white !important;
+  color: #222 !important;
+}
+
 .contact-btn {
   display: inline-block;
   font-weight: 700;
