@@ -15,6 +15,9 @@ const Navbar = () => {
       <nav className="w-full p-3 sm:p-4 bg-white mx-auto relative flex items-start justify-between z-[9999]">
         <Link
           href="/"
+          onClick={() => {
+            window.location.href = "/";
+          }}
           className="block flex-none text-[1.5em] mt-2 leading-normal whitespace-nowrap"
           style={{ flexShrink: 0 }}
         >

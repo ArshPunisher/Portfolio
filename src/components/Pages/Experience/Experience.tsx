@@ -37,12 +37,19 @@ function ExperienceCard({
           <span className="text-[18px] md:text-[22px] xl:text-[24px] font-medium text-indigo-700">
             {exp.company}
           </span>
-          <span className="text-sm md:text-base font-medium text-gray-500 mb-6 md:mb-2">{exp.date}</span>
-          <p className="text-[17px] md:text-[20px] font-medium tracking-wide text-gray-600 mb-2">{exp.desc}</p>
+          <span className="text-sm md:text-base font-medium text-gray-500 mb-6 md:mb-2">
+            {exp.date}
+          </span>
+          <p className="text-[17px] md:text-[20px] font-medium tracking-wide text-gray-600 mb-2">
+            {exp.desc}
+          </p>
           {exp.descBullets && (
             <ul className="text-gray-600 pl-2">
               {exp.descBullets.map((bullet, i) => (
-                <li key={i} className="flex items-start gap-2 text-[16px] md:text-[18px] font-normal tracking-wide">
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-[16px] md:text-[18px] font-normal tracking-wide"
+                >
                   <span className="mt-0.5">⚡</span>
                   <span>{bullet}</span>
                 </li>
