@@ -1,0 +1,20 @@
+{
+  "name": "Arsh Ramgarhia - Full Stack Developer Portfolio",
+  "short_name": "Arsh Dev",
+  "description": "Portfolio of Arsh Ramgarhia, a passionate Full Stack Web Developer specializing in React.js, Next.js, Node.js, TypeScript, and modern web technologies.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["productivity", "utilities", "developer tools"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

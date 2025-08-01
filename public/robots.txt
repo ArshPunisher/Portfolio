@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap location (you'll need to create this)
+Sitemap: https://portfolioarsh.vercel.app/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all other content
+Allow: /assets/
+Allow: /components/ 
