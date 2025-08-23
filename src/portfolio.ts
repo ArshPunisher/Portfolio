@@ -23,7 +23,7 @@ export const greeting = {
   subTitle:
     "I'm a Full-Stack Web Developer who builds web applications with React.js, Next.js, Node.js, Express, PostgreSQL, Firebase, and Tailwind CSS. I handle both frontend and backend development, focusing on building functional and efficient solutions.",
   resumeLink:
-    "https://drive.google.com/file/d/1tGPZHT3aNVxbLSaxskwRv_HN7UWE2knG/view?usp=sharing",
+    "https://drive.google.com/file/d/1xiKKmDzm4BkmVMlGxZsSaCCTBBghnkpE/view?usp=sharing",
   displayGreeting: true,
 };
 
