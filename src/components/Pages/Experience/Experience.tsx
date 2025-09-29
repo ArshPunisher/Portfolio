@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from "next/image";
-import futureFindersLogo from "@/assets/imgs/future-finders.webp";
+import ypssLogo from "@/assets/imgs/ypss.jpg";
 import xampusLogo from "@/assets/imgs/xampus.webp";
 const companyLogos: Record<string, StaticImageData> = {
-  "future-finders.webp": futureFindersLogo,
+  "ypss.jpg": ypssLogo,
   "xampus.webp": xampusLogo,
 };
 import { workExperiences } from "@/portfolio";

@@ -99,15 +99,16 @@ export const workExperiences = {
   display: true,
   experience: [
     {
-      role: "Full Stack Developer Intern",
-      company: "Future Finders",
-      companylogo: "future-finders.webp",
-      date: "Jan 2024 - Jun 2024",
+      role: "Full Stack Developer",
+      company: "YPSS",
+      companylogo: "ypss.jpg",
+      date: "Jan 2023 - Sep 2025",
       desc: "Worked on full-stack development projects, collaborated in team environments, and developed a social media platform project.",
       descBullets: [
         "Developed and deployed full-stack web applications with modern tech stacks.",
         "Collaborated with team members using Git and Agile practices.",
-        "Built a social media project with features like user posts, comments, and authentication.",
+        "Built an admin panel for managing users, roles, and system data.",
+        "Developed a report analysis project with data visualization and insights generation.",
       ],
     },
     {
