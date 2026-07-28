@@ -1,0 +1,38 @@
+.title {
+  font-family: "Agustina Regular", cursive;
+  font-weight: bold;
+  color: #3d2064;
+  font-variant-ligatures: no-common-ligatures;
+  padding: 0 20px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: splash-out var(--splash-duration, 2000ms) ease-in forwards;
+}
+
+@keyframes splash-out {
+  0%,
+  75% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Readers who ask for less motion get straight to the content. */
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    display: none;
+  }
+}
