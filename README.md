@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arsh Ramgarhia — Portfolio
 
-## Getting Started
+Personal portfolio site built with Next.js 15 (App Router), React 19, TypeScript
+and Tailwind CSS v4.
 
-First, run the development server:
+**Live:** https://portfolioarsh.vercel.app
+
+## Getting started
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The app builds and runs with **no environment variables**. They are only needed
+for the contact form to deliver mail — copy `.env.example` to `.env.local` and
+fill in your Resend credentials if you want that working locally.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+| Script           | What it does                                   |
+| ---------------- | ---------------------------------------------- |
+| `yarn dev`       | Dev server                                     |
+| `yarn build`     | Production build                               |
+| `yarn start`     | Serve the production build                     |
+| `yarn typecheck` | `tsc --noEmit`                                 |
+| `yarn lint`      | ESLint                                         |
+| `yarn test`      | Vitest unit tests                              |
+| `yarn format`    | Prettier write                                 |
+| `yarn verify`    | typecheck → lint → test → build (what CI runs) |
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/                 Routes, metadata, sitemap/robots, API
+    api/contact/       Contact form endpoint
+  assets/              Images and SVGs imported by components
+  components/
+    common/            Button, Loading, SocialMedia
+    layout/            Navbar, SplashScreen
+    lottie/            LottiePlayer
+    sections/          Home, Skills, Experience, Projects, Contact
+  data/                portfolio.ts — all site content, and its types
+  hooks/               useHideOnScroll
+  lib/                 mail, rateLimit
+  utils/               contactSchema, escapeHtml
+public/
+  animations/          Lottie JSON, fetched at runtime (never bundled)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Editing content
 
-## Deploy on Vercel
+Everything shown on the site lives in **`src/data/portfolio.ts`** — greeting,
+skills, experience, projects, contact details. It is fully typed against
+`src/data/types.ts`, so a mistyped field is a compile error rather than a
+silently blank section.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Adding a project means adding one entry with an imported image:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```ts
+import myProjectImg from "@/assets/imgs/my-project.webp";
+
+export const projects: Project[] = [
+  {
+    image: myProjectImg,
+    projectName: "My Project",
+    projectDesc: "…",
+    url: "https://…",
+  },
+];
+```
+
+## Notable implementation details
+
+- **Content is server-rendered.** The splash screen is a CSS-driven overlay, not
+  a gate — every section is in the initial HTML, so crawlers and link unfurlers
+  see real content. The overlay also clears without JS.
+- **Animations are not bundled.** Lottie JSON is fetched from `/public` only
+  when a player scrolls near the viewport, keeping several hundred KB out of the
+  page bundle.
+- **Contact endpoint** validates with Zod, escapes all user input before it
+  reaches the HTML email, rate-limits per IP, and never returns internal error
+  detail to the client.
+- **Reduced motion** is respected throughout — splash, marquee, card tilt, wave
+  and Lottie playback.
+
+## Deployment
+
+Deploys to Vercel from `master`. Set `RESEND_API_KEY`, `MAIL_FROM` and `MAIL_TO`
+in the project's environment variables for the contact form; optionally
+`GOOGLE_SITE_VERIFICATION` for Search Console.
