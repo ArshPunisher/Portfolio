@@ -1,28 +1,24 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
-import "./globals.css";
 import { Toaster } from "react-hot-toast";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { greeting, siteUrl, socialMediaLinks } from "@/data/portfolio";
+import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-montserrat",
+  display: "swap",
 });
 
+const title = "Arsh Ramgarhia - Full Stack Developer Portfolio";
+const description =
+  "Portfolio of Arsh Ramgarhia, a Full Stack Web Developer specializing in React.js, Next.js, Node.js, TypeScript, and modern web technologies. View my projects, skills, and experience.";
+
 export const metadata: Metadata = {
-  title: "Arsh Ramgarhia - Full Stack Developer Portfolio",
-  description: "Portfolio of Arsh Ramgarhia, a passionate Full Stack Web Developer specializing in React.js, Next.js, Node.js, TypeScript, and modern web technologies. View my projects, skills, and experience.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   keywords: [
     "Arsh Ramgarhia",
     "Full Stack Developer",
@@ -34,44 +30,41 @@ export const metadata: Metadata = {
     "Portfolio",
     "Frontend Developer",
     "Backend Developer",
-    "JavaScript",
-    "MongoDB",
-    "Express.js"
   ],
-  authors: [{ name: "Arsh Ramgarhia" }],
-  creator: "Arsh Ramgarhia",
-  publisher: "Arsh Ramgarhia",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  authors: [{ name: greeting.username, url: siteUrl }],
+  creator: greeting.username,
+  publisher: greeting.username,
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
   },
-  metadataBase: new URL('https://portfolioarsh.vercel.app'),
-  alternates: {
-    canonical: '/',
-  },
+  manifest: "/site.webmanifest",
+  formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
-    title: "Arsh Ramgarhia - Full Stack Developer Portfolio",
-    description: "Portfolio of Arsh Ramgarhia, a passionate Full Stack Web Developer specializing in React.js, Next.js, Node.js, TypeScript, and modern web technologies.",
-    url: 'https://portfolioarsh.vercel.app',
-    siteName: 'Arsh Ramgarhia Portfolio',
+    title,
+    description,
+    url: siteUrl,
+    siteName: "Arsh Ramgarhia Portfolio",
     images: [
       {
-        url: '/og-image.png',
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'Arsh Ramgarhia - Full Stack Developer',
+        alt: "Arsh Ramgarhia - Full Stack Developer",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Arsh Ramgarhia - Full Stack Developer Portfolio",
-    description: "Portfolio of Arsh Ramgarhia, a passionate Full Stack Web Developer specializing in React.js, Next.js, Node.js, TypeScript, and modern web technologies.",
-    images: ['/og-image.png'],
-    creator: '@arshramgarhia',
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og-image.jpg"],
+    creator: "@ArshRamgarhia",
   },
   robots: {
     index: true,
@@ -79,53 +72,66 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console verification code
-  },
+  // Set GOOGLE_SITE_VERIFICATION to emit the Search Console tag. Omitted when
+  // unset so a placeholder token never ships to production.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+};
+
+/** Structured data — what drives rich results for a personal site. */
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: greeting.username,
+  url: siteUrl,
+  jobTitle: "Full Stack Web Developer",
+  description: greeting.subTitle,
+  image: `${siteUrl}/og-image.jpg`,
+  email: `mailto:${socialMediaLinks.gmail}`,
+  sameAs: [
+    socialMediaLinks.github,
+    socialMediaLinks.linkedin,
+    socialMediaLinks.twitter,
+  ],
+  knowsAbout: [
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "PostgreSQL",
+    "Express.js",
+    "Full Stack Development",
+  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.png" type="image/png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-        
-        {/* Font Awesome */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-          integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
-        
-        {/* Additional SEO meta tags */}
-        <meta name="theme-color" content="#000000" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
-      >
+      <body className={`${montserrat.variable} antialiased`}>
+        <a href="#home" className="skip-link">
+          Skip to content
+        </a>
         {children}
-        <Toaster/>
+        <Toaster />
+        <script
+          type="application/ld+json"
+          // Static, developer-authored object — no user input reaches this.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </body>
     </html>
   );
